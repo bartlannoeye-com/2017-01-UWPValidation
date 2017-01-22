@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewModels="using:Validation.ViewModels"
+    xmlns:system="using:System"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -38,14 +39,10 @@
                 ValidationError="{Binding MyAccount.Errors[PinCode]}" />
             <controls:ValidationComboBox
                 x:Uid="Sex"
+                ItemsSource="{Binding Sexes}"
                 SelectedItem="{Binding MyAccount.Sex, Mode=TwoWay}"
                 Style="{StaticResource ValidationComboBoxStyle}"
                 ValidationError="{Binding MyAccount.Errors[Sex]}">
-                <controls:ValidationComboBox.Items>
-                    <ComboBoxItem>M</ComboBoxItem>
-                    <ComboBoxItem>F</ComboBoxItem>
-                    <ComboBoxItem>Woops</ComboBoxItem>
-                </controls:ValidationComboBox.Items>
             </controls:ValidationComboBox>
 
             <Button x:Uid="ValidateButton" Command="{Binding ValidateCommand}" />

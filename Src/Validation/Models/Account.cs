@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Prism.Windows.Validation;
+using Validation.Resources;
 
 namespace Validation.Models
 {
@@ -14,14 +15,14 @@ namespace Validation.Models
         private string _pinCode;
         private decimal _balance;
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = ErrorMessagesHelper.ErrorRequiredMessageName)]
         public string Name
         {
             get { return _name; }
             set { SetProperty(ref _name, value); }
         }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = ErrorMessagesHelper.ErrorRequiredMessageName)]
         public string Firstname
         {
             get { return _firstname; }
@@ -34,7 +35,7 @@ namespace Validation.Models
             set { SetProperty(ref _age, value); }
         }
 
-        [Required]
+        [Required(ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = ErrorMessagesHelper.ErrorRequiredMessageName)]
         [CustomValidation(typeof(Account), nameof(ValidateSex))]
         public string Sex
         {
@@ -42,14 +43,14 @@ namespace Validation.Models
             set { SetProperty(ref _sex, value); }
         }
 
-        [RegularExpression(RegexConstants.PhoneRegexPattern, ErrorMessage = "Phone is incorrect.")]
+        [RegularExpression(RegexConstants.PhoneRegexPattern, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = ErrorMessagesHelper.ErrorPhoneNumberMessageName)]
         public string Phone
         {
             get { return _phone; }
             set { SetProperty(ref _phone, value); }
         }
 
-        [RegularExpression(RegexConstants.PinRegexPattern, ErrorMessage = "Pin has to be 4 digits.")]
+        [RegularExpression(RegexConstants.PinRegexPattern, ErrorMessageResourceType = typeof(ErrorMessagesHelper), ErrorMessageResourceName = ErrorMessagesHelper.ErrorInvalidPinMessageName)]
         public string PinCode
         {
             get { return _pinCode; }
@@ -73,7 +74,7 @@ namespace Validation.Models
             if (selectedValue == "M" || selectedValue == "F")
                 return ValidationResult.Success;
 
-            return new ValidationResult("Sex is not correct.");
+            return new ValidationResult(ErrorMessagesHelper.ErrorSexMessage);
         }
     }
 }

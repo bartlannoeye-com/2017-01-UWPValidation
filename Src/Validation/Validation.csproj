@@ -99,6 +99,7 @@
     <Compile Include="Controls\ValidationTextBox.cs" />
     <Compile Include="Converters\FirstOfErrorCollectionConverter.cs" />
     <Compile Include="Models\RegexConstants.cs" />
+    <Compile Include="Resources\ErrorMessagesHelper.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

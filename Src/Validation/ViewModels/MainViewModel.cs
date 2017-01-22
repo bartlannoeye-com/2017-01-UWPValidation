@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System.Collections.Generic;
+using Prism.Commands;
 using Prism.Mvvm;
 using Validation.Models;
 
@@ -20,11 +21,16 @@ namespace Validation.ViewModels
             set { SetProperty(ref _myAccount, value); }
         }
 
+        public List<string> Sexes => new List<string>
+        {
+            "M", "F", "Woops"
+        };
+
         public DelegateCommand ValidateCommand { get; private set; }
 
         private void OnValidate()
         {
-            bool? result = MyAccount?.ValidateProperties();
+            MyAccount?.ValidateProperties();
         }
     }
 }
