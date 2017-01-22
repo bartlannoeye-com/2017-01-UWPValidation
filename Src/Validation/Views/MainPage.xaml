@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Validation.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Validation.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:Validation.ViewModels"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:MainViewModel />
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock Margin="120,60,0,40" FontSize="32">Validation Sample</TextBlock>
+
+        <StackPanel Margin="120,120,0,0">
+            <controls:ValidationTextBox
+                x:Uid="Name"
+                Style="{StaticResource ValidationTextBoxStyle}"
+                Text="{Binding MyAccount.Name, Mode=TwoWay}"
+                ValidationError="{Binding MyAccount.Errors[Name]}" />
+            <controls:ValidationTextBox
+                x:Uid="Firstname"
+                Style="{StaticResource ValidationTextBoxStyle}"
+                Text="{Binding MyAccount.Firstname, Mode=TwoWay}"
+                ValidationError="{Binding MyAccount.Errors[Firstname]}" />
+            <controls:ValidationTextBox
+                x:Uid="Phone"
+                Style="{StaticResource ValidationTextBoxStyle}"
+                Text="{Binding MyAccount.Phone, Mode=TwoWay}"
+                ValidationError="{Binding MyAccount.Errors[Phone]}" />
+            <controls:ValidationTextBox
+                x:Uid="PinCode"
+                Style="{StaticResource ValidationTextBoxStyle}"
+                Text="{Binding MyAccount.PinCode, Mode=TwoWay}"
+                ValidationError="{Binding MyAccount.Errors[PinCode]}" />
+            <controls:ValidationComboBox
+                x:Uid="Sex"
+                SelectedItem="{Binding MyAccount.Sex, Mode=TwoWay}"
+                Style="{StaticResource ValidationComboBoxStyle}"
+                ValidationError="{Binding MyAccount.Errors[Sex]}">
+                <controls:ValidationComboBox.Items>
+                    <ComboBoxItem>M</ComboBoxItem>
+                    <ComboBoxItem>F</ComboBoxItem>
+                    <ComboBoxItem>Woops</ComboBoxItem>
+                </controls:ValidationComboBox.Items>
+            </controls:ValidationComboBox>
+
+            <Button x:Uid="ValidateButton" Command="{Binding ValidateCommand}" />
+        </StackPanel>
+    </Grid>
+</Page>

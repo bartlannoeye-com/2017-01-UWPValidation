@@ -1,0 +1,34 @@
+﻿<Application
+    x:Class="Validation.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Validation.Controls"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="ErrorMessageBrush" Color="Red" />
+
+        <Style x:Key="ValidationTextBoxStyle" TargetType="controls:ValidationTextBox">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style
+            x:Key="HighlightTextStyle"
+            BasedOn="{StaticResource ValidationTextBoxStyle}"
+            TargetType="controls:ValidationTextBox">
+            <Setter Property="BorderBrush" Value="{StaticResource ErrorMessageBrush}" />
+        </Style>
+
+        <Style x:Key="ValidationComboBoxStyle" TargetType="controls:ValidationComboBox">
+            <Setter Property="Width" Value="250" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+        </Style>
+
+        <Style x:Key="HighlightComboBoxStyle"
+           BasedOn="{StaticResource ValidationComboBoxStyle}"
+           TargetType="controls:ValidationComboBox">
+            <Setter Property="BorderBrush" Value="{StaticResource ErrorMessageBrush}" />
+        </Style>
+    </Application.Resources>
+</Application>
